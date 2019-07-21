@@ -1,0 +1,161 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scripts/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/UpdatedSkeletonSpritesheet.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/enemyHitbox.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "enemySkeletonIdle"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.6, 1, 1.3, 1.7, 2, 2.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 42, 43, 44, 45, 46, 47, 48, 49 ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4, 0.6, 0.9, 1.1, 1.5, 1.8, 2.1, 2.4, 2.8, 3.1, 3.2, 3.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "onDeath"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.7, 0.9, 1.3, 1.6, 2, 2.4, 2.8, 3.2, 3.5, 4, 4.3, 4.9, 5.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 17, 18, 19, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "skeletonAttack"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1.1, 1.6, 2, 2.5, 3.1, 3.7, 4.3, 4.7, 5, 5.4, 5.7, 5.8, 6.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 0.615572, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("enemyHitbox")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.5, 4.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "disable"
+}, {
+"args": [  ],
+"method": "enable"
+}, {
+"args": [  ],
+"method": "disable"
+} ]
+}
+
+<<<<<<< HEAD
+[sub_resource type="RectangleShape2D" id=5]
+=======
+[sub_resource type="RectangleShape2D" id=7]
+>>>>>>> cb5b857f2a54413ee7413b757428b255d68a2fc3
+extents = Vector2( 5.01836, 11.4167 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 11.8105, 6.08288 )
+
+[node name="Enemy" type="KinematicBody2D"]
+collision_layer = 8
+collision_mask = 11
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 1, 1.1 )
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -25, -20 )
+vframes = 35
+hframes = 2
+<<<<<<< HEAD
+frame = 6
+=======
+frame = 3
+>>>>>>> cb5b857f2a54413ee7413b757428b255d68a2fc3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 6.0
+anims/enemySkeletonIdle = SubResource( 1 )
+anims/enemySkeletonWalk = SubResource( 2 )
+anims/onDeath = SubResource( 3 )
+anims/skeletonAttack = SubResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.0758667, 6.83434 )
+<<<<<<< HEAD
+shape = SubResource( 5 )
+=======
+shape = SubResource( 7 )
+>>>>>>> cb5b857f2a54413ee7413b757428b255d68a2fc3
+one_way_collision_margin = 0.0
+
+[node name="enemyHitbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemyHitbox"]
+position = Vector2( 13.3397, 10.8043 )
+shape = SubResource( 6 )
+<<<<<<< HEAD
+=======
+disabled = true
+>>>>>>> cb5b857f2a54413ee7413b757428b255d68a2fc3
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="body_entered" from="enemyHitbox" to="enemyHitbox" method="_on_enemyHitbox_body_entered"]
